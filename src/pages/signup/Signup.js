@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Signup.scss";
 import { axiosClient } from "../../utils/axiosClient";
 
@@ -7,14 +7,18 @@ function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
     try {
       const result = await axiosClient.post("/auth/signup", {
+        name,
         email,
         password,
       });
+      
+      navigate("/");
     } catch (e) {
       console.log(e);
     }

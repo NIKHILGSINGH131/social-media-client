@@ -17,7 +17,8 @@ if(process.env.NODE_ENV === 'production'){
 }
 
 export const axiosClient = axios.create({
-  baseURL: process.env.REACT_APP_SERVER_BASE_URL,
+  // baseURL: process.env.REACT_APP_SERVER_BASE_URL,
+  baseURL,
   withCredentials: true,
 });
 
